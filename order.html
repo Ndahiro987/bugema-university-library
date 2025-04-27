@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Book - Bugema University Library</title>
+    <style>
+        /* Dark Blue and White Theme */
+        :root {
+            --primary-color: #00008B; /* Dark Blue */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #ADD8E6; /* Light Blue - for emphasis */
+            --text-color: #00008B; /* Dark Blue */
+            --background-color: #FFFFFF; /* White */
+            --light-text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Stack items vertically in the header */
+            align-items: center; /* Center items horizontally */
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 10px 0 0 0; /* Add margin below the logo and above the heading */
+        }
+
+        .logo {
+            max-height: 80px;
+            margin-bottom: 0; /* Remove default margin-right */
+        }
+
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group textarea,
+        .form-group input[type="datetime-local"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: var(--text-color);
+        }
+
+        .form-group textarea {
+            resize: none;
+            height: 100px;
+        }
+
+        .form-group button {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease; /* Smooth transition */
+            text-align: center; /* Center the button text */
+        }
+
+        .form-group button:hover {
+            background-color: #000066;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            border: 1px solid #eee;
+        }
+
+        .order-summary h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 10px;
+        }
+
+        .order-summary p {
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 30px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments for smaller screens */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .form-group {
+                margin-bottom: 10px;
+            }
+
+            .form-group label {
+                margin-bottom: 3px;
+            }
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            margin: 10px 0 0 0; /* Add margin above the nav */
+            padding: 0;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 16px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #000066;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Bugema University Library Logo" class="logo">
+        <h1>Bugema University Library</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+ <li><a href="create_account.html">Register Account</a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Order Book</h2>
+        <form id="orderForm">
+            <div class="form-group">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone" name="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="studentId">Student ID:</label>
+                <input type="text" id="studentId" name="studentId" required>
+            </div>
+            <div class="form-group">
+                <label for="bookTitle">Book Title:</label>
+                <input type="text" id="bookTitle" name="bookTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="orderTime">Order Time:</label>
+                <input type="datetime-local" id="orderTime" name="orderTime" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Place Order</button>
+            </div>
+        </form>
+
+        <div class="order-summary" id="orderSummary" style="display: none;">
+            <h3>Order Summary</h3>
+            <p><strong>Full Name:</strong> <span id="summaryFullName"></span></p>
+            <p><strong>Email:</strong> <span id="summaryEmail"></span></p>
+            <p><strong>Phone Number:</strong> <span id="summaryPhone"></span></p>
+            <p><strong>Student ID:</strong> <span id="summaryStudentId"></span></p>
+            <p><strong>Book Title:</strong> <span id="summaryBookTitle"></span></p>
+            <p><strong>Order Time:</strong> <span id="summaryOrderTime"></span></p>
+            <p><strong>Total Amount:</strong> UGX <span id="summaryTotal">10000</span></p>
+        </div>
+    </div>
+    <footer>
+        <div>&copy; 2025 Bugema University Library | Located in Kampala, Uganda</div>
+        <div>
+            <a href="https://facebook.com/BugemaUniversity" target="_blank">Facebook</a> |
+            <a href="https://twitter.com/BugemaUni" target="_blank">Twitter</a> |
+            <a href="https://instagram.com/BugemaUniversity" target="_blank">Instagram</a> |
+            <a href="https://wa.me/256740666263" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('orderForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Get form values
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const studentId = document.getElementById('studentId').value;
+            const bookTitle = document.getElementById('bookTitle').value;
+            const orderTime = document.getElementById('orderTime').value;
+
+
+            // Update order summary
+            document.getElementById('summaryFullName').textContent = fullName;
+            document.getElementById('summaryEmail').textContent = email;
+            document.getElementById('summaryPhone').textContent = phone;
+            document.getElementById('summaryStudentId').textContent = studentId;
+            document.getElementById('summaryBookTitle').textContent = bookTitle;
+            document.getElementById('summaryOrderTime').textContent = orderTime;
+
+            // Show order summary
+            document.getElementById('orderSummary').style.display = 'block';
+
+            // You would typically send this data to a server here
+            // For demonstration, we'll just display an alert
+            alert('Your order has been placed successfully!');
+            document.getElementById('orderForm').reset();
+
+        });
+    </script>
+</body>
+</html>

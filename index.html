@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugema University Library</title>
+    <style>
+        /* Dark Blue and White Theme */
+        :root {
+            --primary-color: #00008B; /* Dark Blue */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #ADD8E6; /* Light Blue - for emphasis */
+            --text-color: #00008B; /* Dark Blue */
+            --background-color: #FFFFFF; /* White */
+            --light-text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            /* Add background image */
+            background-image: url('back.jpeg'); /* Ensure this path is correct */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            padding: 20px 0;
+            text-align: center;
+            display: flex; /* Added for logo and text alignment */
+            flex-direction: column; /* Arrange logo, title, and WhatsApp link in a row */
+            align-items: center; /* Center items vertically */
+            justify-content: center; /* Space out items */
+            gap: 10px; /* Add some space between items */
+        }
+
+        header h1 {
+            margin-top: 0; /* Remove default top margin */
+            margin-bottom: 0;
+        }
+
+        /* Added for logo */
+        .logo {
+            max-height: 80px; /* Adjust as needed */
+        }
+
+        /* Added for WhatsApp icon/link */
+        .whatsapp-link {
+            display: flex;
+            align-items: center;
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        .whatsapp-link:hover {
+            opacity: 1;
+        }
+
+        .whatsapp-icon {
+            max-height: 30px; /* Adjust size as needed */
+            margin-left: 5px;
+        }
+
+        nav {
+            background-color: var(--secondary-color); /* White */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color); /* Dark Blue text on white */
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--accent-color); /* Light Blue */
+        }
+
+        .hero {
+            background-color: rgba(0, 0, 139, 0.7); /* Dark Blue with transparency */
+            color: var(--light-text-color); /* White */
+            padding: 40px 0;
+            text-align: center;
+            margin-bottom: 20px;
+            /* Add image */
+            background-image: url('IMAGE 3.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .hero h2 {
+            margin-top: 0;
+            font-size: 2.5em;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        .call-to-action {
+            margin-top: 20px;
+        }
+
+        .call-to-action a {
+            display: inline-block;
+            background-color: var(--secondary-color); /* White */
+            color: var(--primary-color); /* Dark Blue text on white */
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .call-to-action a:hover {
+            background-color: #e0e0e0; /* Slightly darker white */
+            color: var(--accent-color); /* Light Blue */
+        }
+
+        .section {
+            padding: 30px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section:last-child {
+            border-bottom: none;
+        }
+
+        .section h2 {
+            color: var(--primary-color); /* Dark Blue */
+        }
+
+        .section ul {
+            list-style: disc;
+            margin-left: 20px;
+        }
+
+        .section li {
+            margin-bottom: 10px;
+        }
+
+        .search-bar {
+            background-color: rgba(255, 255, 255, 0.7); /* White with transparency */
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .search-bar input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 70%;
+            margin-right: 10px;
+            color: var(--text-color); /* Dark Blue */
+        }
+
+        .search-bar button {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .search-bar button:hover {
+            background-color: #000066; /* Slightly darker dark blue */
+        }
+
+        footer {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+
+        /* Login Form Styles */
+        .login-container {
+            background-color: var(--secondary-color); /* White */
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: 20px auto;
+            color: var(--text-color); /* Dark Blue */
+        }
+
+        .login-container h2 {
+            color: var(--primary-color); /* Dark Blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color); /* Dark Blue */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            color: var(--text-color); /* Dark Blue */
+        }
+
+        .form-group button {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #000066; /* Slightly darker dark blue */
+        }
+
+        .login-container p a {
+            color: var(--accent-color); /* Light Blue */
+        }
+
+        .login-separator {
+            text-align: center;
+            margin: 20px 0;
+            color: #ccc;
+        }
+
+        .create-account {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .create-account a {
+            color: var(--accent-color); /* Light Blue */
+        }
+
+        /* Mock Post-Login Sections */
+        .post-login-student, .post-login-admin {
+            background-color: rgba(204, 204, 204, 0.3); /* Light gray with transparency */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            display: none; /* Hidden by default */
+        }
+
+        .post-login-student h2, .post-login-admin h2 {
+            color: var(--accent-color); /* Light Blue */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Bugema University Library Logo" class="logo">
+        <h1>Bugema University Library</h1>
+        <a href="https://wa.me/+243973027420" target="_blank" class="whatsapp-link">
+            <img src="whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+        </a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">signup</a></li>
+            <li><a href="create_account.html">Register Account</a></li>
+
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Welcome to Bugema University Library</h2>
+            <p>Your gateway to knowledge and resources.</p>
+            <div class="call-to-action">
+                <a href="catalog.html">Explore Our Catalog</a>
+            </div>
+        </div>
+
+        <div class="login-container">
+            <h2>Student Login</h2>
+            <form id="studentLoginForm">
+                <div class="form-group">
+                    <label for="studentId">Student ID:</label>
+                    <input type="text" id="studentId" name="studentId" required>
+                </div>
+                <div class="form-group">
+                    <label for="studentPassword">Password:</label>
+                    <input type="password" id="studentPassword" name="studentPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+                <p><a href="#">Forgot Password?</a></p>
+            </form>
+            <div class="create-account">
+                <a href="create_account.html">Create Account</a>
+            </div>
+        </div>
+
+        <div class="login-separator">
+            <hr style="border-top: 1px solid #ccc;">
+            <span>Or</span>
+            <hr style="border-top: 1px solid #ccc;">
+        </div>
+
+        <div class="login-container">
+            <h2>Admin Login</h2>
+            <form id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Username:</label>
+                    <input type="text" id="adminUsername" name="adminUsername" required>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password:</label>
+                    <input type="password" id="adminPassword" name="adminPassword" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit">Login</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="post-login-student">
+            <h2>Welcome, Student!</h2>
+            <p>Here are some resources and links you might find useful:</p>
+            <ul>
+                <li><a href="#">Your Borrowed Books</a></li>
+                <li><a href="#">Book Recommendations</a></li>
+                <li><a href="#">Library Account Settings</a></li>
+                <li><a href="#">Search the Catalog</a></li>
+            </ul>
+        </div>
+
+        <div class="post-login-admin">
+            <h2>Admin Dashboard</h2>
+            <p>Welcome to the library administration panel.</p>
+            <ul>
+                <li><a href="#">Manage Books</a></li>
+                <li><a href="#">Manage Users</a></li>
+                <li><a href="#">View Borrowing History</a></li>
+                <li><a href="#">Add New Resources</a></li>
+                <li><a href="#">Generate Reports</a></li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Our Mission</h2>
+            <p>To support the academic and research needs of Bugema University by providing access to a wide range of information resources and services.</p>
+        </div>
+
+        <div class="section">
+            <h2>Library Hours</h2>
+            <ul>
+                <li>Monday - Friday: 8:00 AM - 10:00 PM</li>
+                <li>Saturday: 9:00 AM - 5:00 PM</li>
+                <li>Sunday: Closed</li>
+            </ul>
+        </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Search for books, journals, etc.">
+            <button type="submit">Search</button>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2025 Bugema University Library | Located in Kampala, Uganda</div>
+        <div>
+            <a href="https://facebook.com/BugemaUniversity" target="_blank">Facebook</a> |
+            <a href="https://twitter.com/BugemaUni" target="_blank">Twitter</a> |
+            <a href="https://instagram.com/BugemaUniversity" target="_blank">Instagram</a> |
+            <a href="https://wa.me/+243973027420" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        // Placeholder for handling login and showing appropriate content
+        document.getElementById('studentLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const studentId = document.getElementById('studentId').value;
+            const studentPassword = document.getElementById('studentPassword').value;
+            // In a real application, you would send this data to a server for verification.
+            if (studentId === 'student123' && studentPassword === 'password') {
+                alert('Student login successful!');
+                // In a real scenario, you would:
+                // 1. Hide the login forms
+                const loginContainers = document.querySelectorAll('.login-container');
+                loginContainers.forEach(container => container.style.display = 'none');
+                const loginSeparator = document.querySelector('.login-separator');
+                if (loginSeparator) loginSeparator.style.display = 'none';
+                // 2. Show the student-specific content
+                document.querySelector('.post-login-student').style.display = 'block';
+            } else {
+                alert('Invalid student credentials.');
+            }
+        });
+
+        document.getElementById('adminLoginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const adminUsername = document.getElementById('adminUsername').value;
+            const adminPassword = document.getElementById('adminPassword').value;
+            // In a real application, you would send this data to a server for verification.
+            if (adminUsername === 'admin' && adminPassword === 'admin123') {
+                alert('Admin login successful!');// In a real scenario, you would:
+                // 1. Hide the login forms
+                const loginContainers = document.querySelectorAll('.login-container');
+                loginContainers.forEach(container => container.style.display = 'none');
+                const loginSeparator = document.querySelector('.login-separator');
+                if (loginSeparator) loginSeparator.style.display = 'none';
+                // 2. Show the admin-specific content
+                document.querySelector('.post-login-admin').style.display = 'block';
+            } else {
+                alert('Invalid admin credentials.');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Details - Bugema University Library</title>
+    <style>
+        /* Dark Blue and White Theme */
+        :root {
+            --primary-color: #00008B; /* Dark Blue */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #ADD8E6; /* Light Blue - for emphasis */
+            --text-color: #00008B; /* Dark Blue */
+            --background-color: #FFFFFF; /* White */
+            --light-text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            /* Add background image */
+            background-image: url('background.jpeg'); /* Ensure background.jpeg is in the same directory */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 30px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+
+        .logo {
+            max-height: 60px;
+            margin-bottom: 10px;
+        }
+
+        .header-buttons {
+            margin-top: 15px;
+        }
+
+        .header-buttons a {
+            display: inline-block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: var(--light-text-color);
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin: 0 5px;
+            border: 2px solid var(--light-text-color);
+            background-color: rgba(255, 255, 255, 0.1); /* Added a subtle background */
+        }
+
+        .header-buttons a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .book-details {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 20px;
+            align-items: start;
+        }
+
+        .book-cover {
+            text-align: center;
+        }
+
+        .book-cover img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .book-info h2 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+
+        .book-info p {
+            margin-bottom: 10px;
+        }
+
+        .book-info .availability {
+            font-weight: bold;
+            color: green;
+        }
+
+        .book-info .unavailable {
+            font-weight: bold;
+            color: red;
+        }
+
+        .book-actions button, .book-actions a.button-link {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            border: none;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .book-actions .order-button {
+            background-color: #4CAF50;
+            color: var(--light-text-color);
+        }
+
+        .book-actions .order-button:hover {
+            background-color: #45a049;
+        }
+
+        .book-actions .back-to-catalog {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .book-actions .back-to-catalog:hover {
+            background-color: #ADD8E6;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Bugema University Library Logo" class="logo">
+        <h1>Book Details</h1>
+        <div class="header-buttons">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="order.html">Order</a>
+            <a href="contact.html">Contact</a>
+            <a href="about.html">About</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="book-details">
+            <div class="book-cover">
+                <img id="book-image" src="" alt="Book Cover">
+            </div>
+            <div class="book-info">
+                <h2 id="book-title"></h2>
+                <p>Author: <span id="book-author"></span></p>
+                <p>ISBN: <span id="book-isbn"></span></p>
+                <p>Availability: <span id="book-availability" class=""></span></p>
+                <p>Description: <span id="book-description"></span></p>
+                <div class="book-actions">
+                    <a id="order-link" href="#" class="order-button button-link">Order Online</a>
+                    <a href="catalog.html" class="back-to-catalog button-link">Back to Catalog</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2025 Bugema University Library | Located in Kampala, Uganda</div>
+        <div>
+            <a href="https://facebook.com/BugemaUniversity" target="_blank">Facebook</a> |
+            <a href="https://twitter.com/BugemaUni" target="_blank">Twitter</a> |
+            <a href="https://instagram.com/BugemaUniversity" target="_blank">Instagram</a> |
+            <a href="https://wa.me/256740666263" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+
+    <script>
+        // Sample book data (replace with your actual data source)
+        const books = {
+            "python_123": {
+                title: "Introduction to Programming with Python",
+                author: "John Doe",
+                isbn: "978-1234567890",
+                availability: "Available",
+                image: "python.jpeg", // Ensure python.jpeg is in the same directory
+                description: "A beginner-friendly guide to learning Python programming language."
+            },
+            "calculus_456": {
+                title: "Calculus Made Easy",
+                author: "Silvanus P. Thompson",
+                isbn: "978-0987654321",
+                availability: "Available",
+                image: "calc.jpeg", // Ensure calc.jpeg is in the same directory
+                description: "A classic text that simplifies the concepts of calculus."
+            },
+            "history_789": {
+                title: "The History of Uganda",
+                author: "Samuel Katende",
+                isbn: "978-9876543210",
+                availability: "Currently Unavailable",
+                image: "hist.jpeg", // Ensure hist.jpeg is in the same directory
+                description: "An in-depth exploration of the history of Uganda."
+            },
+            "chemistry_012": {
+                title: "General Chemistry",
+                author: "Peter Atkins",
+                isbn: "978-0198794830",
+                availability: "Available",
+                image: "chem.jpeg", // Ensure chem.jpeg is in the same directory
+                description: "A comprehensive textbook on the principles of general chemistry."
+            },
+            "physics_345": {
+                title: "Fundamentals of Physics",
+                author: "David Halliday",
+                isbn: "978-1119056244",
+                availability: "Available",
+                image: "phy.jpeg", // Ensure phy.jpeg is in the same directory
+                description: "A foundational text covering the core concepts of physics."
+            },
+            "biology_678": {
+                title: "Campbell Biology",
+                author: "Jane B. Reece",
+                isbn: "978-0321909923",
+                availability: "Currently Unavailable",
+                image: "bio.jpeg", // Ensure bio.jpeg is in the same directory
+                description: "A widely used textbook for introductory biology courses."
+            },
+            "secret_garden_901": {
+                title: "The Secret Garden",
+                author: "Frances Hodgson Burnett",
+                isbn: "978-0142401487",
+                availability: "Available",
+                image: "secret.jpeg", // Ensure novel1.jpeg is in the same directory
+                description: "A heartwarming novel about friendship and the healing power of nature."
+            },
+            "dune_234": {
+                title: "Dune",
+                author: "Frank Herbert",
+                isbn: "978-0441013593",
+                availability: "Available",
+                image: "dune.jpeg", // Ensure sci-fi1.jpeg is in the same directory
+                description: "A science fiction epic set on a desert planet."
+            },
+            "sapiens_567": {
+                title: "Sapiens: A Brief History of Humankind",
+                author: "Yuval Noah Harari",
+                isbn: "978-0062316097",
+                availability: "Available",
+                image: "human.jpeg", // Ensure history1.jpeg is in the same directory
+                description: "An exploration of the history of our species from the Stone Age to the present."
+            }
+            // Add more book details here
+        };
+
+        // Get the book ID from the URL query parameter
+        const urlParams = new URLSearchParams(window.location.search);
+        const bookId = urlParams.get('id');
+
+        // Get the elements to display book details
+        const bookImage = document.getElementById('book-image');
+        const bookTitle = document.getElementById('book-title');
+        const bookAuthor = document.getElementById('book-author');
+        const bookIsbn = document.getElementById('book-isbn');
+        const bookAvailability = document.getElementById('book-availability');
+        const bookDescription = document.getElementById('book-description');
+        const orderLink = document.getElementById('order-link');
+
+        // Check if a book ID exists in the URL
+        if (bookId && books[bookId]) {
+            const book = books[bookId];
+            bookImage.src = book.image;
+            bookImage.alt = book.title + " Cover";
+            bookTitle.textContent = book.title;
+            bookAuthor.textContent = book.author;
+            bookIsbn.textContent = book.isbn;
+            bookAvailability.textContent = book.availability;
+            bookAvailability.className = book.availability === "Available" ? "availability" : "unavailable";
+            bookDescription.textContent = book.description;
+            orderLink.href = `order.html?isbn=${book.isbn}`;
+        } else {
+            // Handle case where book ID is invalid or not found
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    <h2>Book Not Found</h2>
+                    <p>Sorry, the book details could not be found.</p>
+                    <a href="catalog.html" class="back-to-catalog button-link" style="display: inline-block; margin-top: 20px;">Back to Catalog</a>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

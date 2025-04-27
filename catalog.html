@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugema University Library - Catalog</title>
+    <style>
+        /* Dark Blue and White Theme */
+        :root {
+            --primary-color: #00008B; /* Dark Blue */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #ADD8E6; /* Light Blue - for emphasis */
+            --text-color: #00008B; /* Dark Blue */
+            --background-color: #FFFFFF; /* White */
+            --light-text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            /* Add background image */
+            background-image: url('background.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Stack logo above text */
+            align-items: center; /* Center items horizontally */
+            justify-content: center; /* Center items vertically */
+        }
+
+        header h1 {
+            margin-top: 10px; /* Add some space between logo and text */
+            margin-bottom: 0;
+        }
+
+        .logo {
+            max-height: 80px;
+            margin-bottom: 10px; /* Adjust spacing as needed */
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        .catalog-search {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .catalog-search input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 60%;
+            margin-right: 10px;
+            color: var(--text-color);
+        }
+
+        .catalog-search button {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .catalog-search button:hover {
+            background-color: #000066;
+        }
+
+        .catalog-results {
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .book-item {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #eee;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .book-item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .book-item h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+
+        .book-item p {
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        .availability {
+            font-weight: bold;
+            color: green;
+            margin-bottom: 10px;
+        }
+
+        .unavailable {
+            font-weight: bold;
+            color: red;
+            margin-bottom: 10px;
+        }
+
+        .book-item .view-details-button {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            font-size: 0.9em;
+            text-decoration: none; /* Make it look like a button but act like a link */
+            display: inline-block; /* To allow margin adjustments if needed */
+        }
+
+        .book-item .view-details-button:hover {
+            background-color: #ADD8E6;
+        }
+
+        .book-item .order-button {
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none; /* Remove default underline */
+            display: inline-block; /* To allow margin adjustments */
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-top: 5px; /* Add some space between buttons */
+        }
+
+        .book-item .order-button:hover {
+            background-color: #45a049;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--light-text-color);
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Bugema University Library Logo" class="logo">
+        <h1>Bugema University Library</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="create_account.html">Register Account</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="catalog-search">
+            <h2>Search the Catalog</h2>
+            <input type="text" placeholder="Enter book title, author, ISBN...">
+            <button type="submit">Search</button>
+        </div>
+
+        <div class="catalog-results">
+            <h2>Available Books</h2>
+            <div class="book-item">
+                <img src="python.jpeg" alt="Python Book">
+                <h3>Introduction to Programming with Python</h3>
+                <p>Author: John Doe</p>
+                <p>ISBN: 978-1234567890</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=python_123" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-1234567890" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="calc.jpeg" alt="Calculus Book">
+                <h3>Calculus Made Easy</h3>
+                <p>Author: Silvanus P. Thompson</p>
+                <p>ISBN: 978-0987654321</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=calculus_456" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-0987654321" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="hist.jpeg" alt="History Book">
+                <h3>The History of Uganda</h3>
+                <p>Author: Samuel Katende</p>
+                <p>ISBN: 978-9876543210</p>
+                <p class="unavailable">Currently Unavailable</p>
+                <a href="book_details.html?id=history_789" class="view-details-button" style="opacity: 0.6; cursor: not-allowed;">View Details</a>
+                <button class="order-button" disabled style="opacity: 0.6; cursor: not-allowed;">Order Online</button>
+            </div>
+            <div class="book-item">
+                <img src="chem.jpeg" alt="Chemistry Book">
+                <h3>General Chemistry</h3>
+                <p>Author: Peter Atkins</p>
+                <p>ISBN: 978-0198794830</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=chemistry_012" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-0198794830" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="phy.jpeg" alt="Physics Book">
+                <h3>Fundamentals of Physics</h3>
+                <p>Author: David Halliday</p>
+                <p>ISBN: 978-1119056244</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=physics_345" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-1119056244" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="bio.jpeg" alt="Biology Book">
+                <h3>Campbell Biology</h3>
+                <p>Author: Jane B. Reece</p>
+                <p>ISBN: 978-0321909923</p>
+                <p class="unavailable">Currently Unavailable</p>
+                <a href="book_details.html?id=biology_678" class="view-details-button" style="opacity: 0.6; cursor: not-allowed;">View Details</a>
+                <button class="order-button" disabled style="opacity: 0.6; cursor: not-allowed;">Order Online</button>
+            </div>
+
+            <div class="book-item">
+                <img src="secret.jpeg" alt="Novel Book 1">
+                <h3>The Secret Garden</h3>
+                <p>Author: Frances Hodgson Burnett</p>
+                <p>ISBN: 978-0142401487</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=secret_garden_901" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-0142401487" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="dune.jpeg" alt="Science Fiction Book 1">
+                <h3>Dune</h3>
+                <p>Author: Frank Herbert</p>
+                <p>ISBN: 978-0441013593</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=dune_234" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-0441013593" class="order-button">Order Online</a>
+            </div>
+            <div class="book-item">
+                <img src="human.jpeg" alt="History Book 2">
+                <h3>Sapiens: A Brief History of Humankind</h3>
+                <p>Author: Yuval Noah Harari</p>
+                <p>ISBN: 978-0062316097</p>
+                <p class="availability">Available</p>
+                <a href="book_details.html?id=sapiens_567" class="view-details-button">View Details</a>
+                <a href="order.html?isbn=978-0062316097" class="order-button">Order Online</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2025 Bugema University Library | Located in Kampala, Uganda</div>
+        <div>
+            <a href="https://facebook.com/BugemaUniversity" target="_blank">Facebook</a> |
+            <a href="https://twitter.com/BugemaUni" target="_blank">Twitter</a> |
+            <a href="https://instagram.com/BugemaUniversity" target="_blank">Instagram</a> |
+            <a href="https://wa.me/256740666263" target="_blank">WhatsApp</a>
+        </div>
+    </footer>
+</body>
+</html>

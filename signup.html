@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bugema University Library - Sign Up</title>
+    <style>
+        /* Dark Blue and White Theme */
+        :root {
+            --primary-color: #00008B; /* Dark Blue */
+            --secondary-color: #FFFFFF; /* White */
+            --accent-color: #ADD8E6; /* Light Blue - for emphasis */
+            --text-color: #00008B; /* Dark Blue */
+            --background-color: #FFFFFF; /* White */
+            --light-text-color: #FFFFFF; /* White */
+        }
+
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            /* Add background image */
+            background-image: url('background.jpeg'); /* Ensure this path is correct */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Do not repeat the image */
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* White with transparency */
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            padding: 20px 0;
+            text-align: center;
+            display: flex;
+            flex-direction: column; /* Stack items vertically */
+            align-items: center; /* Center items horizontally */
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0; /* Add space below the heading */
+        }
+
+        /* Added for logo */
+        .logo {
+            max-height: 80px; /* Adjust as needed */
+            margin-right: 0; /* Remove right margin */
+            margin-bottom: 10px; /* Add space below the logo */
+        }
+
+        nav {
+            background-color: var(--secondary-color); /* White */
+            padding: 10px 0;
+            text-align: center;
+            width: 100%; /* Make nav full width of header */
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: inline-block;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color); /* Dark Blue text on white */
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: var(--accent-color); /* Light Blue */
+        }
+
+
+        h2 {
+            color: var(--primary-color); /* Dark Blue */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: var(--text-color); /* Dark Blue */
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+             color: var(--text-color); /* Dark Blue */
+        }
+
+        .form-group button {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #000066; /* Slightly darker dark blue */
+        }
+
+        .login-link {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .login-link a {
+            color: var(--accent-color); /* Light Blue */
+        }
+
+        footer {
+            background-color: var(--primary-color); /* Dark Blue */
+            color: var(--light-text-color); /* White */
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+        }
+
+        footer a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        footer a:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+         <img src="logo.png" alt="Bugema University Library Logo" class="logo">
+        <h1>Bugema University Library</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="login.html">Login</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+ <li><a href="create_account.html">Register Account</a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signupForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="form-group">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+    </div>
+
+    <footer>
+        <div>&copy; 2025 Bugema University Library | Located in Kampala, Uganda</div>
+        <div>
+            <a href="https://facebook.com/BugemaUniversity" target="_blank">Facebook</a> |
+            <a href="https://twitter.com/BugemaUni" target="_blank">Twitter</a> |
+            <a href="https://instagram.com/BugemaUniversity" target="_blank">Instagram</a> |
+             <a href="https://wa.me/256740666263" target="_blank">
+                <img src="whatsapp_logo.png" alt="WhatsApp" style="height: 20px; vertical-align: middle;"> WhatsApp
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password === confirmPassword) {
+                // In a real application, you'd send this data to a server to create a new user.
+                alert(`Account created successfully for ${firstName} ${lastName}! Please log in.`);
+                 window.location.href = 'login.html';
+            } else {
+                alert('Passwords do not match. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
